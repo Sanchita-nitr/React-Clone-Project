@@ -1,0 +1,1363 @@
+<!DOCTYPE html>
+<html>
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>react.dev</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+        integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer " />
+
+    <style>
+        body {
+            overflow-x: hidden;
+        }
+
+        #navbar {
+            margin-left: -0.5%;
+            position: fixed;
+            margin-top: -0.89%;
+            width: 100vw;
+            padding-top: 8px;
+            display: flex;
+            flex-direction: row;
+            background-color: white;
+            padding-bottom: 0.3%;
+            z-index: 1;
+        }
+
+        #navbar img {
+            margin-top: 1%;
+            padding-left: 1%;
+        }
+
+        .Searchicon {
+            display: flex;
+            margin-left: 3%;
+            margin-top: 2%;
+        }
+
+        #topnav input[type="text"] {
+            margin-top: 1.2%;
+            margin-bottom: 1%;
+            font-size: 15px;
+            text-align: start;
+            outline-offset: 2px;
+            background-color: rgba(153, 161, 179, .2);
+            border-color: rgba(183, 187, 198, 0.023);
+            border-radius: 30px;
+            margin-left: 10px;
+            width: 850px;
+            height: 2.26rem;
+        }
+
+        #list li {
+            font-size: 15px;
+            list-style: none;
+            display: flex;
+            flex-direction: row;
+            margin-top: 1%;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            color: rgb(64 71 86);
+        }
+
+        .moon {
+            font-size: 23px;
+            margin-right: -4px;
+            margin-left: 1px;
+            cursor: pointer;
+        }
+
+        #heropart {
+            margin-left: -0.5%;
+            background-color: white;
+            padding-bottom: 9%;
+        }
+
+        #heropart img {
+            align-items: center;
+            padding-top: 8.7%;
+            padding-left: 46%;
+        }
+
+        #heropart h1 {
+            margin-top: 1%;
+            font-size: 52px;
+            font-weight: 600;
+            color: rgb(35 39 47);
+            font-family: Optimistic Display, -apple-system, ui-sans-serif, system-ui, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
+            text-align: center;
+        }
+
+        #heropart p {
+            margin-top: -1.9%;
+            font-size: 32px;
+            font-family: Optimistic Display, -apple-system, ui-sans-serif, system-ui, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
+            color: rgb(64 71 86);
+            text-align: center;
+        }
+
+        #b1 {
+            background-color: rgb(8, 126, 159);
+            margin-left: 40%;
+            border: 0 solid rgb(8, 126, 159);
+            border-radius: 25px;
+            height: 2.5rem;
+            width: 130px;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            font-size: 17px;
+            transform: scale(1.1);
+            transition-duration: 15ms;
+            margin-right: 20px;
+            color: azure;
+        }
+
+        #b1:hover {
+            background-color: rgba(8, 126, 159, 0.736);
+            cursor: pointer;
+        }
+
+        #b2 {
+            background-color: white;
+            border-radius: 25px;
+            border: 1px solid rgba(146, 148, 152, 0.702);
+            height: 2.5rem;
+            width: 130px;
+            font-size: 17px;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            transform: scale(1.1);
+            transition-duration: 15ms;
+        }
+
+        #b2:hover {
+            background-color: rgba(153, 161, 179, 0.117);
+            cursor: pointer;
+        }
+
+        #part2 {
+            margin-left: -0.5%;
+            width: 100%;
+            padding-top: 1%;
+            padding-bottom: 8%;
+            background-color: rgba(201, 206, 216, 0.108);
+        }
+
+        #part2 p {
+            margin-top: 7%;
+            letter-spacing: 1pt;
+            font-size: 55px;
+            font-family: Optimistic Display, -apple-system, ui-sans-serif, system-ui, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Apple Color Emoji;
+            text-align: center;
+            font-weight: 500;
+            color: rgba(0, 0, 0, 0.865);
+        }
+
+        .part2_1 h1 {
+            margin-top: -2%;
+            line-height: 23pt;
+            letter-spacing: 1px;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            font-weight: normal;
+            text-align: center;
+            font-size: 19px;
+            color: rgb(64 71 86);
+        }
+
+        .highlight {
+            background-color: rgba(167, 167, 179, 0.189);
+            padding-top: 5px;
+            padding-left: 3px;
+            padding-right: 3px;
+            padding-bottom: 5px;
+            border-radius: 5px;
+            font-family: Source Code Pro, ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, Liberation Mono, Courier New, monospace;
+        }
+
+        .container img {
+            margin-top: 3%;
+            margin-left: 7%;
+            border: 1px solid #cecfd1;
+            border-radius: 15px;
+            z-index: 0;
+            position: relative;
+        }
+
+        .blur img {
+            margin-top: -24.3%;
+            margin-bottom: 6%;
+            margin-left: 48%;
+            border: 1px solid #cecfd1;
+            border-radius: 15px;
+            width: 45%;
+            height: 330px;
+            z-index: 1;
+        }
+
+        #part3 {
+            margin-left: -0.5%;
+            padding-top: 2%;
+            padding-bottom: 8%;
+            background-color: #dfe5edef;
+        }
+
+        #part3 p {
+            margin-top: 7%;
+            letter-spacing: 1pt;
+            font-size: 55px;
+            font-family: Optimistic Display, -apple-system, ui-sans-serif, system-ui, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Apple Color Emoji;
+            text-align: center;
+            font-weight: 500;
+            color: rgba(0, 0, 0, 0.865);
+        }
+
+        .part3_1 h1 {
+            margin-top: -2%;
+            line-height: 23pt;
+            letter-spacing: 1px;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            font-weight: normal;
+            text-align: center;
+            font-size: 19px;
+            color: rgb(64 71 86);
+        }
+
+
+        .container3 img {
+            margin-bottom: 6%;
+            margin-top: 3%;
+            margin-left: 7%;
+            border-radius: 30px;
+            z-index: 0;
+            position: relative;
+        }
+
+
+        #part4 {
+            margin-left: -0.5%;
+            padding-top: 2%;
+            background-color: rgba(194, 196, 200, 0.203);
+        }
+
+        #part4 p {
+            margin-top: 7%;
+            letter-spacing: 1pt;
+            font-size: 55px;
+            font-family: Optimistic Display, -apple-system, ui-sans-serif, system-ui, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Apple Color Emoji;
+            text-align: center;
+            font-weight: 500;
+            color: rgba(0, 0, 0, 0.865);
+        }
+
+        .part4_1 h1 {
+            margin-top: -2%;
+            line-height: 23pt;
+            letter-spacing: 1px;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            font-weight: normal;
+            text-align: center;
+            font-size: 19px;
+            color: rgb(64 71 86);
+        }
+
+        .part4_1 img {
+            margin-top: 2.5%;
+            margin-bottom: 5%;
+            margin-left: 5%;
+            border-radius: 20px;
+        }
+
+        #b3 {
+            background-color: #fff;
+            text-align: center;
+            color: rgb(35 39 47);
+            font-size: 17px;
+            padding-left: 0.8%;
+            padding-right: 0.8%;
+            border-radius: 20px;
+            margin-top: 2%;
+            margin-left: 45%;
+            height: 2.5rem;
+            margin-bottom: 8%;
+            border: 1px solid #cecfd1;
+        }
+
+        #b3:hover {
+            background-color: rgba(153, 161, 179, 0.117);
+            cursor: pointer;
+        }
+
+        #part5 {
+            margin-left: -0.5%;
+            background-color: #e4e4ec40;
+            padding-top: 1%;
+            padding-bottom: 8%;
+        }
+
+        #part5 p {
+            margin-top: 7%;
+            letter-spacing: 1pt;
+            font-size: 55px;
+            font-family: Optimistic Display, -apple-system, ui-sans-serif, system-ui, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Apple Color Emoji;
+            text-align: center;
+            font-weight: 500;
+            color: rgba(0, 0, 0, 0.865);
+        }
+
+        .part5_1 h1 {
+            margin-top: -2%;
+            line-height: 23pt;
+            letter-spacing: 1px;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            font-weight: normal;
+            text-align: center;
+            font-size: 19px;
+            color: rgb(64 71 86);
+        }
+
+        .box3 {
+            margin-top: 5%;
+            background-color: rgb(248, 252, 252);
+            width: 40%;
+            margin-left: 8%;
+            border: 2px solid black;
+            border-radius: 10px;
+        }
+
+        .container3 h5 {
+            font-size: 15px;
+            padding-left: 2.3%;
+            font-weight: normal;
+            line-height: 1pt;
+
+        }
+
+        .container5 img {
+            margin-top: 3%;
+            margin-left: 6.3%;
+            border-radius: 20px;
+            height: 540PX;
+            z-index: 0;
+            position: relative;
+        }
+
+        .blur5 img {
+            margin-top: -39%;
+            margin-bottom: 5%;
+            margin-left: 49.6%;
+            border: 1px solid rgba(99, 106, 123, 0.317);
+            border-radius: 20px;
+            z-index: 1;
+        }
+
+        #b4 {
+            background-color: #fff;
+            border: 1px solid #cecfd1;
+            text-align: center;
+            color: rgb(35 39 47);
+            font-size: 18px;
+            padding-left: 2%;
+            padding-right: 2%;
+            justify-content: center;
+            border-radius: 30px;
+            margin-top: 2%;
+            margin-left: 40%;
+            height: 3rem;
+        }
+
+        #b4:hover {
+            background-color: rgba(153, 161, 179, 0.117);
+            cursor: pointer;
+        }
+
+        #part6 {
+            margin-left: -0.5%;
+            background-color: #e5e7eb;
+            padding-top: 1%;
+            padding-bottom: 8%;
+        }
+
+        #part6 p {
+            margin-top: 7%;
+            letter-spacing: 1pt;
+            font-size: 55px;
+            font-family: Optimistic Display, -apple-system, ui-sans-serif, system-ui, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Apple Color Emoji;
+            text-align: center;
+            font-weight: 500;
+            color: rgba(0, 0, 0, 0.865);
+        }
+
+        .part6_1 h1 {
+            margin-top: -2%;
+            line-height: 21pt;
+            letter-spacing: 1px;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            font-weight: normal;
+            text-align: center;
+            font-size: 20px;
+            color: rgb(64 71 86);
+        }
+
+        .img1 {
+            margin-left: 32%;
+            margin-top: 14.5%;
+        }
+
+        .box4 img {
+            background-color: #ffffff;
+            border: 1px solid rgba(26, 14, 14, 0.172);
+            border-radius: 20px;
+            height: 70px;
+            width: 70px;
+            margin-left: 2.2%;
+            padding: 1%;
+        }
+
+        .box4 {
+            height: 9cm;
+            margin-bottom: 8%;
+            margin-top: -38%;
+            width: 40%;
+            background-image: conic-gradient(from -90deg at 110% 100%, #fff 0deg, #ebecf0 90deg, #ebecf0 1turn);
+            border: 10px solid black;
+            border-radius: 20px;
+            margin-left: 50%;
+            padding-bottom: 5%;
+            font-family: Optimistic Text, -apple-system, ui-sans-serif, system-ui, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
+
+        }
+
+        .container4 h2 {
+            padding-left: 8%;
+            font-size: 35px;
+            font-weight: 500;
+        }
+
+        .container4 h4 {
+            color: rgba(46, 45, 45, 0.877);
+            font-size: 20px;
+            font-weight: 300;
+            line-height: 2pt;
+            padding-left: 8%;
+        }
+
+        .box6 {
+            height: 9.5cm;
+            margin-bottom: 8%;
+            margin-top: 5%;
+            width: 43%;
+            border: 9px solid rgba(183, 187, 198, 0.023);
+            background-color: rgba(255, 255, 255, 0.5);
+            border: 1px solid #cecfd1;
+            border-radius: 20px;
+            margin-left: 6%;
+            padding-bottom: 5%;
+            font-family: Optimistic Text, -apple-system, ui-sans-serif, system-ui, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
+        }
+
+        .img {
+            margin-left: 30%;
+            margin-top: 12.5%;
+        }
+
+        .box6 img {
+            background-color: #ffffffcf;
+            border: 1px solid rgba(26, 14, 14, 0.172);
+            border-radius: 20px;
+            height: 70px;
+            width: 70px;
+            margin-left: 2%;
+            padding: 1%;
+        }
+
+        .Searchbox {
+            width: 98.66%;
+            padding-top: -4%;
+            margin-left: -0.1%;
+            padding-right: 1.23%;
+            margin-top: -1.5%;
+            border: 1px solid #cecfd1;
+            margin-top: -0.3%;
+            border-top-right-radius: 20px;
+            border-top-left-radius: 20px;
+            background-color: white;
+
+        }
+
+        .Search h3 {
+            font-weight: 100;
+            color: #a4a8b2;
+            padding-top: 4px;
+            padding-bottom: 5px;
+            font-size: 12px;
+            margin-left: 2%;
+            width: 95%;
+            background-color: rgba(153, 161, 179, .2);
+            text-align: center;
+            border: 5px solid rgba(183, 187, 198, 0.023);
+            border-radius: 40px;
+
+        }
+
+        .container6 h2 {
+            padding-top: 1%;
+            padding-left: 5%;
+            font-size: 35px;
+            font-weight: 500;
+        }
+
+        .container6 h4 {
+            color: rgba(46, 45, 45, 0.877);
+            font-size: 20px;
+            font-weight: 300;
+            line-height: 2pt;
+            padding-left: 5%;
+        }
+
+
+        #part7 {
+            margin-left: -0.5%;
+            background-color: rgb(236, 242, 242);
+            padding-top: 1%;
+            padding-bottom: 15%;
+        }
+
+        #part7 p {
+            margin-top: 7%;
+            margin-left: 10%;
+            letter-spacing: 1pt;
+            font-size: 55px;
+            font-family: Optimistic Display, -apple-system, ui-sans-serif, system-ui, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Apple Color Emoji;
+            text-align: justify;
+            font-weight: 500;
+            color: rgba(0, 0, 0, 0.865);
+
+        }
+
+        .part7_1 h1 {
+            margin-left: 10%;
+            line-height: 13pt;
+            letter-spacing: 1px;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            font-weight: normal;
+            text-align: justify;
+            font-size: 20px;
+            color: rgb(64 71 86);
+        }
+
+        .part7_2 {
+            margin-top: 3%;
+        }
+
+        .part7_2 li {
+            display: flex;
+            flex-direction: column;
+            display: inline;
+            font-size: 20px;
+            color: rgb(64 71 86);
+        }
+
+        .part7_2 li ul {
+            line-height: 0.8ch;
+            margin-left: 7.2%;
+            letter-spacing: 1px;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            font-weight: normal;
+            text-align: justify;
+        }
+
+        #b5 {
+            background-color: #fff;
+            border: 1px solid #cecfd1;
+            width: 21%;
+            text-align: center;
+            color: rgb(35 39 47);
+            font-size: 18px;
+            padding-left: 2%;
+            padding-right: 2%;
+            justify-content: center;
+            border-radius: 30px;
+            margin-top: 2%;
+            margin-left: 10%;
+            height: 3rem;
+        }
+
+        #b5:hover {
+            background-color: #a4a8b215;
+            cursor: pointer;
+        }
+
+        .div1 {
+            margin-top: -31%;
+            height: 5cm;
+            width: 20%;
+            margin-left: 52%;
+            border: 1px solid #cecfd1;
+            border-radius: 15px;
+        }
+
+        .div1:hover {
+            background-color: #d9dbe33d;
+        }
+
+        .div1 h1 {
+            padding-left: 6%;
+            font-size: 30px;
+            line-height: 23pt;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            font-weight: 600;
+        }
+
+        .div1 h1:hover {
+            text-decoration: underline;
+            text-underline-offset: 4px;
+
+
+        }
+
+        .div1 h6 {
+            padding-left: 10%;
+            padding-top: 15%;
+            font-size: 15px;
+            color: rgb(64 71 86);
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            font-weight: 300;
+        }
+
+        .div2 {
+            margin-top: -13.5%;
+            height: 5cm;
+            width: 20%;
+            margin-left: 73.5%;
+            border: 1px solid #cecfd1;
+            border-radius: 15px;
+        }
+
+        .div2:hover {
+            background-color: #d9dbe33d;
+        }
+
+        .div2 h1 {
+            padding-left: 6%;
+            font-size: 30px;
+            line-height: 23pt;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            font-weight: 600;
+        }
+
+        .div2 h1:hover {
+            text-decoration: underline;
+            text-underline-offset: 4px;
+        }
+
+        .div2 h6 {
+            padding-left: 10%;
+            padding-top: 4.5%;
+            font-size: 15px;
+            color: rgb(64 71 86);
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            font-weight: 300;
+        }
+
+        .div3 {
+            margin-top: 1.3%;
+            height: 4cm;
+            width: 20%;
+            margin-left: 52%;
+            border: 1px solid #cecfd1;
+            border-radius: 15px;
+        }
+
+        .div3:hover {
+            background-color: #d9dbe33d;
+        }
+
+        .div3 h1 {
+            padding-left: 6%;
+            font-size: 30px;
+            line-height: 23pt;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            font-weight: 600;
+        }
+
+        .div3 h1:hover {
+            text-decoration: underline;
+            text-underline-offset: 4px;
+        }
+
+        .div3 h6 {
+            padding-left: 10%;
+            padding-top: 4.5%;
+            font-size: 15px;
+            color: rgb(64 71 86);
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            font-weight: 300;
+        }
+
+        .div4 {
+            margin-top: -10.89%;
+            height: 4cm;
+            width: 20%;
+            margin-left: 73.4%;
+            border: 1px solid #cecfd1;
+            border-radius: 15px;
+        }
+
+        .div4:hover {
+            background-color: #d9dbe33d;
+        }
+
+        .div4 h1 {
+            padding-left: 6%;
+            font-size: 30px;
+            line-height: 23pt;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            font-weight: 600;
+        }
+
+        .div4 h1:hover {
+            text-decoration: underline;
+            text-underline-offset: 4px;
+        }
+
+        .div4 h6 {
+            padding-left: 10%;
+            padding-top: 4.5%;
+            font-size: 15px;
+            color: rgb(64 71 86);
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            font-weight: 300;
+        }
+
+        #part8 {
+            margin-left: -0.5%;
+            background-color: rgb(231, 232, 237);
+            padding-top: 1%;
+            padding-bottom: 6%;
+        }
+
+        #part8 p {
+            margin-top: 7%;
+            letter-spacing: 1pt;
+            font-size: 55px;
+            font-family: Optimistic Display, -apple-system, ui-sans-serif, system-ui, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Apple Color Emoji;
+            text-align: center;
+            font-weight: 500;
+            color: rgba(0, 0, 0, 0.865);
+        }
+
+        .part8_1 h1 {
+            margin-top: -2%;
+            line-height: 21pt;
+            letter-spacing: 1px;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            font-weight: normal;
+            text-align: center;
+            font-size: 20px;
+            color: rgb(64 71 86);
+        }
+
+        #lastpart img {
+            align-items: center;
+            padding-top: 8.7%;
+            padding-left: 46%;
+        }
+
+        #lastpart h1 {
+            margin-top: 1%;
+            font-size: 52px;
+            font-weight: 600;
+            color: rgb(35 39 47);
+            font-family: Optimistic Display, -apple-system, ui-sans-serif, system-ui, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
+            text-align: center;
+        }
+
+        #b6 {
+            background-color: rgb(8, 126, 159);
+            margin-left: 46%;
+            border: 0 solid rgb(8, 126, 159);
+            border-radius: 25px;
+            height: 2.5rem;
+            width: 130px;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            font-size: 17px;
+            transform: scale(1.1);
+            transition-duration: 15ms;
+            margin-right: 20px;
+            color: azure;
+            margin-bottom: 5%;
+        }
+
+        #b6:hover {
+            background-color: rgba(8, 126, 159, 0.736);
+            cursor: pointer;
+        }
+
+        #div5 p {
+            font-size: 15px;
+            font-weight: 600;
+            margin-right: 76%;
+        }
+
+        #div5 h4 {
+            font-weight: 500;
+            font-size: 14px;
+            margin-left: 5.5%;
+        }
+
+        #div6 p {
+            font-size: 15px;
+            font-weight: 600;
+            margin-top: -4.7%;
+            margin-right: 43%;
+        }
+
+        #div6 h4 {
+            line-height: 20pt;
+            font-weight: 500;
+            font-size: 14px;
+            margin-left: 25%;
+        }
+
+        #div7 p {
+            font-size: 15px;
+            font-weight: 600;
+            margin-top: -15%;
+            margin-right: 8.5%;
+        }
+
+        #div7 h4 {
+            line-height: 20pt;
+            font-weight: 500;
+            font-size: 14px;
+            margin-left: 41.5%;
+        }
+
+        #div8 p {
+            font-size: 15px;
+            font-weight: 600;
+            margin-top: -7.3%;
+            margin-left: 28%;
+        }
+
+        #div8 h4 {
+            line-height: 20pt;
+            font-weight: 500;
+            font-size: 14px;
+            margin-left: 60.78%;
+        }
+
+        #div9 p {
+            font-size: 15px;
+            font-weight: 600;
+            margin-top: -11.1%;
+            margin-left: 60%;
+        }
+
+        #div9 h4 {
+            line-height: 20pt;
+            font-weight: 500;
+            font-size: 14px;
+            margin-left: 78.5%;
+        }
+
+        #fb {
+            padding-left: 78%;
+            margin-top: -8%;
+        }
+
+        .slider {
+            width: 100%;
+            height: 350px;
+            margin-top: 5%;
+
+        }
+
+        .slide-track {
+            width: 200%;
+            animation: scroll 80s infinite;
+        }
+
+        .slide {
+
+            display: flex;
+            flex-direction: row;
+        }
+
+        .slide img {
+            margin-right: 1%;
+            display: inline;
+            height: 235px;
+            width: 325px;
+            border-radius: 20px;
+        }
+
+        #img1 {
+            rotate: -2deg;
+        }
+
+        #img1:hover {
+            rotate: 0deg;
+            transition: 0.6s;
+            transform: scale(1.1);
+        }
+
+        #img2 {
+            rotate: 2deg;
+        }
+
+        #img2:hover {
+            rotate: 0deg;
+            transition: 0.6s;
+            transform: scale(1.1);
+
+        }
+
+        #img3 {
+            rotate: -2deg;
+        }
+
+        #img3:hover {
+            rotate: 0deg;
+            transition: 0.6s;
+            transform: scale(1.1);
+
+        }
+
+        #img4 {
+            rotate: 2deg;
+        }
+
+        #img4:hover {
+            rotate: 0deg;
+            transition: 0.6s;
+            transform: scale(1.1);
+
+        }
+
+        #img5 {
+            rotate: -2deg;
+        }
+
+        #img5:hover {
+            rotate: 0deg;
+            transition: 0.6s;
+            transform: scale(1.1);
+        }
+
+        #img6 {
+            rotate: 2deg;
+        }
+
+        #img6:hover {
+            rotate: 0deg;
+            transition: 0.6s;
+            transform: scale(1.1);
+
+        }
+
+        #img7 {
+            rotate: -2deg;
+        }
+
+        #img7:hover {
+            rotate: 0deg;
+            transition: 0.6s;
+            transform: scale(1.1);
+        }
+
+        #img8 {
+            rotate: 2deg;
+        }
+
+        #img8:hover {
+            rotate: 0deg;
+            transition: 0.6s;
+            transform: scale(1.1);
+        }
+
+        @keyframes scroll {
+            0% {
+                transform: translateX(0);
+            }
+
+            100% {
+                transform: translateX(-100%);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <nav id="navbar">
+        <img src="/Users/sanchita/Downloads/React_Logo_SVG.svg.png " height="35px" alt="React_Logo_SVG">
+        <div id="topnav">
+            <input type="text" placeholder="Search">
+        </div>
+        </div>
+        <div id="list">
+            <li class="linav">
+                <ul>Learn</ul>
+                <ul>Reference</ul>
+                <ul>Community</ul>
+                <ul>Blog</ul>
+                <ul>
+                    <div class="moon"><i class="fa-regular fa-moon" id="dark"></i></div>
+                </ul>
+                <ul> <a href="https://github.com/facebook/react/releases"> <img
+                            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRCHxR2C_q8ugOMQzSmMovD3ni-z1QqTopSjg&s"
+                            height="25" alt="Github"></a></ul>
+            </li>
+        </div>
+    </nav>
+
+    <div id="heropart">
+        <img src="/Users/sanchita/Downloads/React_Logo_SVG.svg.png" height="105px" alt="React_Logo_SVG">
+        <h1 class="h1"> React</h1>
+
+        <p class="ph"> The library for web and native user interfaces </p>
+
+        <button type="button" name="button" id="b1"> Learn React </button>
+        <button type="button" name="button" id="b2"> API Reference</button>
+    </div>
+
+    <div id="part2">
+        <p class="phe"> Create user interfaces<br>
+            from components</p>
+        <div class="part2_1">
+            <h1 class="hb">React lets you build user interfaces out of individual pieces called components.<br>
+                Create your own React components like <span class="highlight"> Thumbnail</span> ,<span
+                    class="highlight">LikeButton</span> , and <span class="highlight">Video</span>.<br>
+                Then combine them into entire screens, pages, and apps.</h1>
+            <div class="container">
+                <img src="/Users/sanchita/Downloads/Screenshots/Screenshot 2024-03-10 at 8.17.14 PM.png" alt="1st photo"
+                    height="360">
+            </div>
+
+            <div class="blur">
+                <img src="/Users/sanchita/Downloads/Screenshots/Blur img.png" alt="Blur">
+            </div>
+
+            <h1 class="hc"> Whether you work on your own or with thousands of other developers, using <br>
+                React feels the same. It is designed to let you seamlessly combine compon
+                <br>written by independent people, teams, and organizations.
+            </h1>
+        </div>
+    </div>
+
+    <div id="part3">
+        <p class="pm"> Write components
+            <br> with code and markup
+        </p>
+        <div class="part3_1">
+            <h1 class="hd"> React components are JavaScript functions. Want to show some content
+                <br>conditionally? Use an <span class="highlight">if</span> statement. Displaying a list? Try array
+                <span class="highlight">map()</span>. Learning
+                <br> React is learning programming.
+            </h1>
+            <div class="container3">
+                <img src="/Users/sanchita/Downloads/Screenshots/Screenshot 2024-03-11 at 3.17.34 PM.png" alt="img"
+                    height="450">
+            </div>
+
+            <h1 class="he"> This markup syntax is called JSX. It is a JavaScript syntax extension popularized
+                <br> by React. Putting JSX markup close to related rendering logic makes React
+                <br> components easy to create, maintain, and delete.
+            </h1>
+        </div>
+    </div>
+
+    <div id="part4">
+        <p class="phm">Add interactivity
+            <br>wherever you need it
+        </p>
+        <div class="part4_1">
+            <h1 class="hf">React components receive data and return what should appear on the screen. <br>
+                You can pass them new data in response to an interaction, like when the user <br>
+                types into an input. React will then update the screen to match the new data</h1>
+
+            <img src="/Users/sanchita/Downloads/Screenshots/Screenshot 2024-03-11 at 7.01.02 PM.png" alt="Video img"
+                height="490px">
+            <h1 class="hg">You don't have to build your whole page in React. Add React to your existing <br>
+                HTML page, and render interactive React components anywhere on it.</h1>
+            <button type="button" name="button" id="b3"> /> Add React to your page > </button>
+
+        </div>
+        <div id="part5">
+            <p class="phn">Go full-stack
+                <br> with a framework
+            </p>
+            <div class="part5_1">
+                <h1 class="hh">React is a library. It lets you put components together, but it doesn't prescribe <br>
+                    how to do routing and data fetching. To build an entire app with React, we <br>
+                    recommend a full-stack React framework like Next.js or Remix.</h1>
+
+                <div class="container5">
+                    <img src="/Users/sanchita/Downloads/Screenshots/Screenshot 2024-03-11 at 7.12.52 PM.png" alt="img">
+                </div>
+                <div class="blur5">
+                    <img src="/Users/sanchita/Downloads/Screenshots/Screenshot 2024-03-11 at 7.21.51 PM.png"
+                        alt="Video img2" height="550px">
+                </div>
+
+                <h1 class="hj">React is also an architecture. Frameworks that implement it let you fetch data in <br>
+                    asynchronous components that run on the server or even during the build. Read <br>
+                    data from a file or a database, and pass it down to your interactive components.</h1>
+
+                <button type="button" name="b4" id="b4">Get started with a framework > </button>
+            </div>
+        </div>
+
+
+        <div id="part6">
+            <p class="pho">Use the best from
+                <br>every platform
+            </p>
+
+            <div class="part6_1">
+                <h1 class="hk">People love web and native apps for different reasons. React lets you build both <br>
+                    web apps and native apps using ame skills. It leans upon each platform’s <br>
+                    unique strengths to let your interfaces feel just right on every platform.</h1>
+
+                <div class="box6">
+                    <div class="container6">
+                        <div class="Searchbox">
+                            <div class="Search">
+                                <h3>example.com</h3>
+                            </div>
+                        </div>
+
+                        <h2 class="hl"> Stay true to the web</h2>
+                        <h4> People expect web app pages to load fast. On the </h4>
+                        <h4> server, React lets you start streaming HTML while </h4>
+                        <h4>you’re still fetching data, progressively filling in the </h4>
+                        <h4>remaining content before any JavaScript code loads. </h4>
+                        <h4> On the client, React can use standard web APIs to keep </h4>
+                        <h4>your UI responsive even in the middle of rendering.</h4>
+                    </div>
+                    <div class="img">
+                        <img src="Google_Chrome_icon_(February_2022).svg.png" alt="chrome">
+                        <img src="Firefox_logo,_2019.svg.png" alt="firefox">
+                        <img src="Safari_browser_logo.svg.png" alt="Safari">
+                    </div>
+
+                </div>
+
+                <div class="box4">
+                    <div class="container4">
+                        <nav class="time">
+                            <h6> 11:08 PM</h6>
+                        </nav>
+                        <h2 class="hm"> Go truly native</h2>
+                        <h4 class="hn"> People expect native apps to look and feel like their</h4>
+                        <h4> platform. React Native and Expo let you build apps</h4>
+                        <h4>in React for Android, iOS, and more. They look and</h4>
+                        <h4>feel native because their UIs are truly native. It's not</h4>
+                        <h4> a web view—your React components render real</h4>
+                        <h4>Android and iOS views provided by the platform.</h4>
+                    </div>
+                    <div class="img1">
+                        <img src="png-transparent-apple-logo-new-york-city-brand-computer-apple-company-computer-logo.png"
+                            alt="Apple">
+                        <img src="Android_logo_2019.png" alt="Android">
+                    </div>
+
+                </div>
+                <h1 class="ho">With React, you can be a web <i> and</i> a native developer. Your team can ship to many
+                    <br>
+                    platforms without sacrificing the user experience. Your organization can bridge <br>
+                    the platform silos, and form teams that own entire features end-to-end.
+                </h1>
+            </div>
+        </div>
+
+        <div id="part7">
+            <p class="php">Upgrade when the <br>
+                future is ready</p>
+
+            <div class="part7_1">
+                <h1 class="hp">React approaches changes with care. Every React </h1>
+                <h1 class="hpa">commit is tested on business-critical surfaces with over </h1>
+                <h1 class="hpb">a billion users. Over 100,000 React components at </h1>
+                <h1 class="hpc">Meta help validate every migration strategy.</h1>
+            </div>
+            <div class="part7_2">
+                <li class="li">
+                    <ul>The React team is always researching how to improve</ul>
+                    <ul>React. Some research takes years to pay off. React has</ul>
+                    <ul>a high bar for taking a research idea into production.</ul>
+                    <ul>Only proven approaches become a part of React.</ul>
+                </li>
+            </div>
+            <button type="button" name="b5" id="b5">Read more React news ></button>
+
+            <div class="div1">
+                <h1> React Labs:<br>
+                    February 2024</h1>
+                <h6 class="hq"> February 15, 2024</h6>
+            </div>
+            <div class="div2">
+                <h1> React Canaries:<br>
+                    Incremental <br>
+                    Feature Rollout</h1>
+                <h6 class="hr">My 3, 2023</h6>
+            </div>
+            <div class="div3">
+                <h1> React Labs: <br>
+                    March 2023</h1>
+                <h6 class="hs"> March 22, 2023</h6>
+            </div>
+            <div class="div4">
+                <h1> Introducing<br>
+                    react.dev</h1>
+                <h6 class="ht"> March 16, 2023</h6>
+            </div>
+        </div>
+
+        <div id="part8">
+            <p class="phq">Join a community<br>
+                of millions</p>
+
+            <div class="part8_1">
+                <h1 class="hu">You’re not alone. Two million developers from all over the world visit the React <br>
+                    docs every month. React is something that people and teams can agree on.</h1>
+
+                <div class="slider">
+                    <div class="slide-track">
+                        <div class="slide">
+                            <img src="Screenshot 2024-03-11 at 11.24.21 PM.png" id="img1">
+                            <img src="Screenshot 2024-03-11 at 11.29.05 PM.png" id="img2">
+                            <img src="Screenshot 2024-03-11 at 11.29.42 PM.png" id="img3">
+                            <img src="Screenshot 2024-03-11 at 11.30.14 PM.png" id="img4">
+                            <img src="Screenshot 2024-03-11 at 11.30.39 PM.png" id="img5">
+                            <img src="Screenshot 2024-03-11 at 11.31.03 PM.png" id="img6">
+                            <img src="Screenshot 2024-03-11 at 11.31.36 PM.png" id="img7">
+                            <img src="Screenshot 2024-03-11 at 11.32.20 PM.png" id="img8">
+                        </div>
+                    </div>
+                </div>
+                <h1 class="hv">This is why React is more than a library, an architecture, or even an ecosystem.<br>
+                    React is a
+                    community. It’s a place where you can ask for help, find opportunities, <br> and meet new
+                    friends.
+                    You
+                    will meet both developers and designers, beginners <br> and experts, researchers and artists,
+                    teachers
+                    and students. Our backgrounds <br> may be very different, but React lets us all create user
+                    interfaces
+                    together.</h1>
+            </div>
+            <div id="lastpart">
+                <img src="/Users/sanchita/Downloads/React_Logo_SVG.svg.png" height="105px" alt="React_Logo_SVG">
+                <h1 class="hw"> Welcome to the <br>React community</h1>
+                <button type="button" name="b6" id="b6">Get Started</button>
+
+            </div>
+            <div id="div5">
+                <p class="pha">Meta Open Source</p>
+                <h4>@2024</h4>
+            </div>
+
+            <div id="div6">
+                <p class="phb">Learn React</p>
+                <h4>Quick Start <br>Installation <br>Describing the UI <br> Adding Interactivity <br> Managing
+                    State
+                    <br> Escape Hatches
+                </h4>
+            </div>
+
+            <div id="div7">
+                <p class="phc">API Reference</p>
+                <h4>React APIs <br> React DOM APIs</h4>
+            </div>
+            <div id="div8">
+                <p class="phd">Community</p>
+                <h4>Code of Conduct <br> Meet the Team <br> Docs Contributors <br> Acknowledgements</h4>
+            </div>
+            <div id="div9">
+                <p class="pe">More</p>
+                <h4>Blog <br> React Native <br> Privacy <br> Terms</h4>
+            </div>
+
+            <div id="conatct">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSCHyRb9LNb_j9gQXaMl0wDCS7WF6G6aq80X3QGTQp5JhlS7IvM9JU0ohXjYtwSJXzOv54&usqp=CAU"
+                    alt="facebook" height="23.5" name="facebook" id="fb">
+                <img src="https://img.freepik.com/free-vector/twitter-new-2023-x-logo-white-background-vector_1017-45422.jpg?size=338&ext=jpg&ga=GA1.1.1395880969.1710028800&semt=ais"
+                    alt="x" height="23.5" name="X" id="x">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRbgdzGGdVW2Cz0JEJPM9cbF9K1nl8fTVoBIw&usqp=CAU"
+                    alt="Github" height="23.5" name="Git Hub" id="gh">
+            </div>
+
+
+            <script>
+                const theme = document.getElementById('dark');
+                const body = document.querySelector('body')
+                theme.addEventListener("click", function () {
+                    var element = document.querySelector("#dark");
+                    if (element.classList.contains("fa-moon")) {
+                        element.classList.remove("fa-moon");
+                        element.classList.add("fa-sun");
+                    } else {
+                        element.classList.remove("fa-sun");
+                        element.classList.add("fa-moon");
+                    }
+                    document.querySelector('body').style.color = "white";
+                    document.querySelector(".box6").style.backgroundColor = " white";
+                    document.querySelector("#navbar").style.backgroundColor = " rgba(12, 15, 23)";
+                    document.querySelector("#heropart").style.backgroundColor = "rgb(43, 48, 59)";
+                    document.querySelector("#part2").style.backgroundColor = "rgba(12, 15, 23, 0.792)";
+                    document.querySelector("#part3").style.backgroundColor = "rgb(43, 48, 59)";
+                    document.querySelector("#part4").style.backgroundColor = "rgba(12, 15, 23, 0.792)";
+                    document.querySelector("#part5").style.backgroundColor = "rgb(43, 48, 59)";
+                    document.querySelector("#part6").style.backgroundColor = " rgba(12, 15, 23, 0.792)";
+                    document.querySelector("#part7").style.backgroundColor = "rgb(43, 48, 59)";
+                    document.querySelector("#part8").style.backgroundColor = "rgba(12, 15, 23, 0.792)";
+                    document.querySelector('body').style.backgroundColor = "rgba(12, 15, 23)";
+                    document.querySelector(".linav").style.color = " white";
+                    document.querySelector(".ph").style.color = "white";
+                    document.querySelector(".phe").style.color = "white";
+                    document.querySelector(".pm").style.color = "white";
+                    document.querySelector(".phm").style.color = "white";
+                    document.querySelector(".phn").style.color = "white";
+                    document.querySelector(".pho").style.color = "white";
+                    document.querySelector(".php").style.color = "white";
+                    document.querySelector(".phq").style.color = "white";
+                    document.querySelector(".pha").style.color = "white";
+                    document.querySelector(".phb").style.color = "white";
+                    document.querySelector(".phc").style.color = "white";
+                    document.querySelector(".phd").style.color = "white";
+                    document.querySelector(".pe").style.color = "white";
+                    document.querySelector(".h1").style.color = "white";
+                    document.querySelector(".hb").style.color = "white";
+                    document.querySelector(".hc").style.color = "white";
+                    document.querySelector(".hd").style.color = "white";
+                    document.querySelector(".he").style.color = "white";
+                    document.querySelector(".hf").style.color = "white";
+                    document.querySelector(".hg").style.color = "white";
+                    document.querySelector(".hh").style.color = "white";
+                    document.querySelector(".hj").style.color = "white";
+                    document.querySelector(".hk").style.color = "white";
+                    document.querySelector(".hl").style.color = "black";
+                    document.querySelector(".hm").style.color = "black";
+                    document.querySelector(".hn").style.color = "black";
+                    document.querySelector(".ho").style.color = "white";
+                    document.querySelector(".hp").style.color = "white";
+                    document.querySelector(".hpa").style.color = "white";
+                    document.querySelector(".hpb").style.color = "white";
+                    document.querySelector(".hpc").style.color = "white";
+                    document.querySelector(".hq").style.color = "white";
+                    document.querySelector(".hr").style.color = "white";
+                    document.querySelector(".hs").style.color = "white";
+                    document.querySelector(".ht").style.color = "white";
+                    document.querySelector(".hu").style.color = "white";
+                    document.querySelector(".hv").style.color = "white";
+                    document.querySelector(".hw").style.color = "white";
+                    document.querySelector(".li").style.color = "white";
+                })
+            </script>
+
+</body>
+
+</html>
